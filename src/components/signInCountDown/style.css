@@ -1,0 +1,32 @@
+.bgr1 {
+    background-image: url('./images/bg-1.jpg');
+}
+
+.color-span {
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.icon {
+    color: #3cd017;
+    width: 50px;
+    height: 50px;
+}
+
+.icon-span {
+    padding-left: 165px;
+}
+
+.content-count {
+    font-weight: normal;
+    display: flex;
+    padding-left: 40px;
+    padding-bottom: 0;
+    font-size: 18px;
+}
+
+.count-down {
+    padding-left: 5px;
+    padding-right: 5px;
+}

@@ -1,0 +1,29 @@
+.bgr {
+    background-image: url('./images/login.jpg');
+}
+
+.input-mail {
+    margin-left: 11px;
+}
+
+.input-mail, .input-password {
+    width: 230px
+}
+
+.frm-login {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px 30px;
+}
+
+.form-mss {
+    margin-left: 60px;
+    color: red;
+}
+
+.link-register {
+    margin-left: 85px;
+    padding-top: 20px;
+    color: #2e546b;
+    font-size: 15px;
+}
