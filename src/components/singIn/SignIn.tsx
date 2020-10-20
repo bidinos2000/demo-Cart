@@ -21,6 +21,7 @@ const SignInContent = (props: any) => {
     const onFinish = (value: any) => {
         axiosClient.post(`${API_URL}login`,{email: value.email,password: value.password}).then((res:any) => {
             if(res.code === 200 ) {
+                localStorage.setItem('token', JSON.stringify(res.token));
                 setLoginSuccess(false);
                 history.push('/');
             }else if(res.code === 400){

@@ -173,7 +173,7 @@ const CartContent = (props: any) => {
                                         id={record.id}
                                         className="form-control input-number" 
                                         defaultValue={dataIndex}
-                                        style={{width:"70px",marginBottom:"5px"}}/>
+                                        style={{width:"30px",marginBottom:"5px"}}/>
                                 </div>
                             )
                         }

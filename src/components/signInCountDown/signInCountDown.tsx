@@ -12,6 +12,7 @@ const SignInCountDown = (props: any) => {
     
     const [timeString, setTimeString] = useState(10);
     const {accRegister} = props;
+    
     useEffect(() => {
         const countDown = setInterval(() => {
             if(timeString <= 0){

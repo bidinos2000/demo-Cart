@@ -54,6 +54,7 @@ const Navbar = (props:any) => {
         setClick(false);
         localStorage.setItem('loginSuccess', '');
         localStorage.setItem('cart', '');
+        localStorage.removeItem("token");
         props.onChangeStatus(true);
         props.onAddCart([]);
     }
@@ -104,7 +105,7 @@ const Navbar = (props:any) => {
                                             <span className="dropdown-toggle" data-toggle="dropdown"><Avatar className="user-icon" size={48} icon={<GithubOutlined />} /></span>
                                                 <ul className="dropdown-menu drop-menu">
                                                     <li>
-                                                        <Link  to='/setting-user' className="btn-link" onClick={closeLogOut}>
+                                                        <Link  to='/setting-user' className="btn-link" onClick={closeMobileMenu}>
                                                             <Button buttonStyle="btn-outline">Profile</Button>
                                                         </Link>
                                                     </li>
@@ -122,10 +123,9 @@ const Navbar = (props:any) => {
                                             <span className="dropdown-toggle" data-toggle="dropdown"> <Avatar className="user-icon" size={48} icon={<GithubOutlined />} /></span>
                                                 <ul className="dropdown-menu drop-menu">
                                                     <li>
-                                                        <Link to='/' className="btn-link">
+                                                        <Link to='/setting-user' className="btn-link" onClick={closeMobileMenu}>
                                                             <Button buttonStyle="btn-outline"
                                                                 buttonSize="btn-mobile"
-                                                                onClick={closeLogOut}
                                                             >Profile</Button>
                                                         </Link>
                                                     </li>

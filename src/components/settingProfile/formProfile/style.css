@@ -1,0 +1,162 @@
+
+  .main-secction{
+    padding-bottom: 20px;
+    height: 100%;
+    padding-top: 20px;
+  }
+  .image-section{
+    padding: 0px;
+  }
+  .image-section img{
+    width: 100%;
+    height:250px;
+    position: relative;
+  }
+  .user-image{
+    position: absolute;
+    margin-top:-50px;
+  }
+  .user-left-part{
+    margin: 80px
+  }
+  .user-image img{
+    width:100px;
+    height:100px;
+  }
+  .user-profil-part{
+    padding-bottom:30px;
+    background-color:#1c2237;
+    border-bottom-left-radius: 20px;
+  }
+  .follow{
+    width:50%;
+    font-size:12px;
+    border:1px solid #DDDDDD;
+    background-color: #fff;
+    font-weight: 600;
+    cursor: default;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  .user-detail-row{
+    margin:0px; 
+  }
+  .user-detail-section1 {
+      margin-top: 60px;
+      margin-bottom: 10px;
+  }
+  .user-detail-section2 p{
+    font-size:12px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .user-detail-section2{
+    margin-top:10px;
+  }
+  .user-detail-section2 span{
+    color:#7CBBC3;
+    font-size: 20px;
+  }
+  .user-detail-section2 small{
+    font-size:12px;
+    color:#D3A86A;
+  }
+  .profile-right-section{
+    padding: 20px 0px 10px 15px;
+    background-color: #1c2441; 
+    border-bottom-right-radius: 20px;
+    padding-right: 50px;
+  }
+  .profile-right-section-row{
+    margin: 0px;
+  }
+  .profile-header-section1 h1{
+    font-size: 25px;
+    margin: 0px;
+  }
+  .profile-header-section1 p{
+    color:#878787;
+  }
+  .req-btn{
+    height:30px;
+    font-size:12px;
+  }
+  .profile-tag{
+    padding: 10px;
+    border:1px solid #F6F6F6;
+  }
+  .profile-tag p{
+    font-size: 12px;
+    color:#ADADAD;
+  }
+  .profile-tag i{
+    color:#ADADAD;
+    font-size: 20px;
+  }
+  .image-right-part{
+    background-color: #FCFCFC;
+    margin: 0px;
+    padding: 5px;
+  }
+  .img-main-rightPart{
+    background-color: #FCFCFC;
+  }
+  .image-right-detail{
+    padding: 0px;
+  }
+  .image-right-detail p{
+    font-size: 12px;
+  }
+  .image-right-detail a:hover{
+    text-decoration: none;
+  }
+  .image-right img{
+    width: 100%;
+  }
+  .image-right-detail-section2{
+    margin: 0px;
+  }
+  .image-right-detail-section2 p{
+    color:#38ACDF;
+    margin:0px;
+  }
+  .image-right-detail-section2 span{
+    color:#7F7F7F;
+  }
+
+  .user-icon {
+      background: #831a8a;
+  }
+
+  .color{
+    color: white;
+  }
+
+  .user-detail-section2 .border{
+    margin-bottom:10px;
+    border: 2px solid white!important;
+  }
+
+  .icon-confirm{
+      font-size: 35px;
+      cursor: pointer;
+  }
+
+  .icon-history{
+      cursor: pointer;
+      font-size: 35px;
+  }
+
+  .icon-delete{
+      font-size: 35px;
+      cursor: pointer;
+  }
+
+  .input-infor{
+      background-color: #1c2237;
+      color: white;
+  }
+
+  .btn-save{
+      margin-top: 20px;
+  }

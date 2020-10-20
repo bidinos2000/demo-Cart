@@ -17,6 +17,10 @@
     background: #1c2237;
 }
 
+.input-group{
+    width: 70px;
+}
+
 .input-number{
     width: 60px;
     height: 30px;
