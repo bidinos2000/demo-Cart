@@ -10,21 +10,18 @@ import * as actions from './../../actions/index';
 
 const SignInCountDown = (props: any) => {
     
-    var limitTime: number = 10
-    const [timeString, setTimeString] = useState(limitTime);
+    const [timeString, setTimeString] = useState(10);
     const {accRegister} = props;
     useEffect(() => {
         const countDown = setInterval(() => {
-            if(limitTime <= 0){
+            if(timeString <= 0){
                 onFinish(accRegister);
-                clearInterval(countDown);
-                return;
             }else {
-                limitTime -= 1;
-                setTimeString(limitTime);
+                setTimeString(timeString - 1);
             }
         }, 1000);
-    },[]);
+        return () => clearInterval(countDown);
+    },[timeString]);
 
 
     
