@@ -121,14 +121,23 @@ const Navbar = (props:any) => {
                                         <li>
                                             <span className="dropdown-toggle" data-toggle="dropdown"> <Avatar className="user-icon" size={48} icon={<GithubOutlined />} /></span>
                                                 <ul className="dropdown-menu drop-menu">
-                                                    <li><a href="#">Menu 1.1</a></li>
+                                                    <li>
+                                                        <Link to='/' className="btn-link">
+                                                            <Button buttonStyle="btn-outline"
+                                                                buttonSize="btn-mobile"
+                                                                onClick={closeLogOut}
+                                                            >Profile</Button>
+                                                        </Link>
+                                                    </li>
                                                     <li className="divider"></li>
-                                                    <Link to='/' className="btn-link">
-                                                        <Button buttonStyle="btn-outline"
-                                                            buttonSize="btn-mobile"
-                                                            onClick={closeLogOut}
-                                                        >Sign Out</Button>
-                                                    </Link>
+                                                    <li>
+                                                        <Link to='/' className="btn-link">
+                                                            <Button buttonStyle="btn-outline"
+                                                                buttonSize="btn-mobile"
+                                                                onClick={closeLogOut}
+                                                            >Sign Out</Button>
+                                                        </Link>
+                                                    </li>
                                                     <li className="divider"></li>
                                                 </ul>
                                         </li>

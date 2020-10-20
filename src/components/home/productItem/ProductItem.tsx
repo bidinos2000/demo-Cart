@@ -9,7 +9,6 @@ const ProductItem = (props: any) => {
     const {product, productAddCard} = props;
     const datas:Array<Product> = productAddCard;
     const handleOrder = () => {
-        let today = new Date();
         if(datas.length === 0 && product != null){
             product.number += 1;
             datas.push(product);

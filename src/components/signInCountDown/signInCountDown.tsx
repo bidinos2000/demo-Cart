@@ -16,9 +16,9 @@ const SignInCountDown = (props: any) => {
     useEffect(() => {
         const countDown = setInterval(() => {
             if(limitTime <= 0){
-                console.log(accRegister);
                 onFinish(accRegister);
                 clearInterval(countDown);
+                return;
             }else {
                 limitTime -= 1;
                 setTimeString(limitTime);
