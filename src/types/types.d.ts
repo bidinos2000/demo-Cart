@@ -40,3 +40,24 @@ type Product = {
     status: boolean,
     number: number,
 }
+
+type resLogin = {
+    code: number,
+    message: string,
+    token: string,
+}
+
+type DataInfor = {
+    id: string,
+    email: string,
+    password:string,
+    firstName: string,
+    lastName: string,
+}
+
+type DataHistory = {
+    id: any,
+    date: string,
+    idUser: string,
+    product: Product
+}

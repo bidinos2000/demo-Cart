@@ -55,6 +55,7 @@ const Navbar = (props:any) => {
         localStorage.setItem('loginSuccess', '');
         localStorage.setItem('cart', '');
         localStorage.removeItem("token");
+        localStorage.removeItem("id");
         props.onChangeStatus(true);
         props.onAddCart([]);
     }

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Table, Button , Image, Row, Col } from 'antd';
+import { Table, Button , Image} from 'antd';
 import './style.css';
 import * as actions from './../../actions/index';
 import { connect } from 'react-redux';
@@ -8,6 +8,9 @@ import ModelAll from './Model/Model';
 import { useHistory } from 'react-router';
 import * as mess from './../../constants/message';
 import Model1 from './Model/Model1';
+import ARI_URL from './../../constants/configProducts';
+import axiosClient from './../../untils/axiosClient';
+
 
 const { Column } = Table;
 
@@ -109,11 +112,22 @@ const CartContent = (props: any) => {
                     console.log('fail')
                     setVisible1(true);
                 }else{
-                    console.log('login');
-                    mess.CHECK_OUT();
-                    history.push('/');
-                    localStorage.setItem('cart', '');
-                    props.onAddCart([]);
+                    //format date
+                    let pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+                    let date = new Date();
+                    let formatDate = new Date(date.toString().replace(pattern, '$3-$2-$1'));
+                    let idUser = localStorage.getItem('id');
+                    dataCart.forEach((cart:Product, index:number) => {
+                        axiosClient.post(`${ARI_URL}history`, {date: formatDate,idUser:idUser, product:cart}).then((res:any) =>{
+                            mess.CHECK_OUT();
+                            history.push('/');
+                            localStorage.setItem('cart', '');
+                            props.onAddCart([]);
+                        }).catch((err:any) => {
+                            mess.CHECK_OUT_FAIL();
+                            console.log(err);
+                        });
+                    });
                 }
             }
         }else{
@@ -140,82 +154,80 @@ const CartContent = (props: any) => {
     }
 
     return (
-        <Row>
-            <Col span={24}>
-                <Table dataSource={dataCart} className="table" rowKey={dataCart.length > 0 ? "id" : "-1"}>
-                    <Column 
-                        title="Image" 
-                        dataIndex="image" 
-                        key="id"
-                        render = {(dataIndex, record) => (
-                                <Image
-                                    width={100}
-                                    height={100}
-                                    src="error"
-                                    fallback={dataIndex}
-                                />
-                            )
-                        }
+        <>
+            <Table dataSource={dataCart} className="table" rowKey={dataCart.length > 0 ? "id" : "-1"}>
+                <Column 
+                    title="Image" 
+                    dataIndex="image" 
+                    key="id"
+                    render = {(dataIndex, record) => (
+                            <Image
+                                width={100}
+                                height={100}
+                                src="error"
+                                fallback={dataIndex}
+                            />
+                        )
+                    }
 
-                    />
-                    <Column title="Name" dataIndex="name" key="id" />
-                    <Column 
-                        title="Quantity" 
-                        dataIndex="number"
-                        key="id"
-                        render = {(dataIndex, record: Product) => (
-                                <div className="input-group" >
-                                    <input min={1}
-                                        onBlur={onBlur} 
-                                        onFocus={() => handleOnFocus(record)} 
-                                        onChange={handleInputNumber} 
-                                        type="number"
-                                        id={record.id}
-                                        className="form-control input-number" 
-                                        defaultValue={dataIndex}
-                                        style={{width:"30px",marginBottom:"5px"}}/>
-                                </div>
-                            )
-                        }
-                    />
-                    <Column
-                        title="Price ($)"
-                        dataIndex="price"
-                        key="id"
-                    />
-                    <Column
-                        title="Action"
-                        key="id"
-                        dataIndex="id"
-                        render={(dataIndex, record: any) => (
-                            <Button type="primary" value={dataIndex} danger onClick={handleOnDelete}>Delete</Button>
-                        )}
-                    />
-                </Table>
-                <ModelAll 
-                    handleOk={handleOk} 
-                    handleOk1={handleOk1}
-                    handleCancel1={handleCancel1}
-                    handleCancel={handleCancel} 
-                    checkButton={checkButton}
-                    checkCart = {checkCart}
-                    visible={visible}
-                    stringMess={stringMess}
-                    stringTitle={stringTitle}
                 />
-                <Model1 visible={visibale1} handleOk2={handleOk2} handleCancel={handleCancel}/>
-                <div className="total-cart"><h3>Total: {totalPrice()}$ </h3>
-                <br></br>
-                <button 
-                    type="button" 
-                    className="btn btn-primary btn-checkOut" 
-                    onClick={checkProcessCheckOut} 
-                >
-                    Process CheckOut<FiNavigation2  className="icon-checkOut"/>
-                </button>
-                </div>
-            </Col>
-        </Row> 
+                <Column title="Name" dataIndex="name" key="id" />
+                <Column 
+                    title="Quantity" 
+                    dataIndex="number"
+                    key="id"
+                    render = {(dataIndex, record: Product) => (
+                            <div className="input-group" >
+                                <input min={1}
+                                    onBlur={onBlur} 
+                                    onFocus={() => handleOnFocus(record)} 
+                                    onChange={handleInputNumber} 
+                                    type="number"
+                                    id={record.id}
+                                    className="form-control input-number" 
+                                    defaultValue={dataIndex}
+                                    style={{width:"30px",marginBottom:"5px"}}/>
+                            </div>
+                        )
+                    }
+                />
+                <Column
+                    title="Price ($)"
+                    dataIndex="price"
+                    key="id"
+                />
+                <Column
+                    title="Action"
+                    key="id"
+                    dataIndex="id"
+                    render={(dataIndex, record: any) => (
+                        <Button type="primary" value={dataIndex} danger onClick={handleOnDelete}>Delete</Button>
+                    )}
+                />
+            </Table>
+            <ModelAll 
+                handleOk={handleOk} 
+                handleOk1={handleOk1}
+                handleCancel1={handleCancel1}
+                handleCancel={handleCancel} 
+                checkButton={checkButton}
+                checkCart = {checkCart}
+                visible={visible}
+                stringMess={stringMess}
+                stringTitle={stringTitle}
+            />
+            <Model1 visible={visibale1} handleOk2={handleOk2} handleCancel={handleCancel}/>
+            <div className="total-cart"><h3>Total: {totalPrice()}$ </h3>
+            <br></br>
+            <button 
+                type="button" 
+                className="btn btn-primary btn-checkOut" 
+                onClick={checkProcessCheckOut} 
+            >
+                Process CheckOut<FiNavigation2  className="icon-checkOut"/>
+            </button>
+            </div>
+        </>
     )
 }
 

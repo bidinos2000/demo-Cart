@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import SettingUser from './pages/SettingUser';
+import HistoryUser from './components/settingProfile/formManage/manager/HistoryUser';
 const routes = [
     {
         path: '/',
@@ -41,6 +42,11 @@ const routes = [
         path: '/setting-user',
         exact: false,
         main: () => <SettingUser />
+    },
+    {
+        path: '/history-user',
+        exact: false,
+        main: () => <HistoryUser />
     }
 ];
 

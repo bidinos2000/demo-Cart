@@ -43,3 +43,24 @@ export const updateCart = (listProduct: Array<Product>, product: Product, quanti
         quantity
     }
 }
+
+export const getInfor = (dataInfor: DataInfor) => {
+    return {
+        type: types.GET_INFOR,
+        dataInfor
+    }
+}
+
+export const updateInfor = (data: DataInfor) => {
+    return {
+        type: types.UPDATE_INFOR,
+        data,
+    }
+}
+
+export const getHistory = (data: DataHistory) => {
+    return {
+        type: types.GET_HISTORY_USER,
+        data,
+    }
+}

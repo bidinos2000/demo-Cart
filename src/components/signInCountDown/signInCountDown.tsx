@@ -32,6 +32,7 @@ const SignInCountDown = (props: any) => {
     const onFinish = (value: any) => {
         axiosClient.post(`${API_URL}login`,{email: value.email,password: value.password}).then((res:any) => {
             if(res.code === 200 ) {
+                localStorage.setItem('token', res.data.token);
                 setLoginSuccess(false);
                 history.push('/');
                 // window.location.reload();

@@ -24,6 +24,18 @@ export const CHECK_OUT = () => {
     message.success('Thank you for your purchase');
 }
 
+export const CHECK_OUT_FAIL = () => {
+    message.error('CheckOut Fail');
+}
+
 export const CHECK_QUANTITY = () => {
     message.warn('Quantity is Positive Number Or You can Delete into Cart');
+}
+
+export const UPDATE_INFOR_SUCCESS = () => {
+    message.success('Update Infor Success');
+}
+
+export const UPDATE_INFOR_FAIL = () => {
+    message.error('Update Infor Fail');
 }

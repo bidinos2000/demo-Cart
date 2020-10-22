@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FormProfile from '../components/settingProfile/formProfile/FormProfile';
 import FormManage from '../components/settingProfile/formManage/FormManage';
 import axiosClient from './../untils/axiosClient';
 import API_URL from '../constants/config';
+import * as actions from './../actions/index';
+import { connect } from 'react-redux';
 
-const SettingUser = () => {
-    const token = localStorage.getItem('token');
+
+const SettingUser = (props:any) => {
+
+    //get token
+    const resToken = localStorage.getItem('token');
+    const token = `Bearer ${resToken}`;
     console.log(token);
     //get infor user
-    const ongetInfor = async (token:string) => {
-        const abc = await axiosClient.post('https://codes-crypto-express.herokuapp.com/api/user/profile',null,{ Authorization: token});
-        console.log(abc);
-    }
-    if(token){
-        ongetInfor(token);
-    }
+    useEffect(() => {
+        const ongetInfor = async (token:string) => {
+            const data = await axiosClient.get(`${API_URL}user/profile`,null,{ Authorization: token});
+            props.getInfor(data.data);
+        }
+        if(resToken){
+            ongetInfor(token);
+        }
+    },[]);
+
     return (
         <div className="container main-secction">
             <div className="row">
@@ -47,4 +56,12 @@ const SettingUser = () => {
     )
 }
 
-export default SettingUser;
+const mapDispatchToProps = (dispatch: any, props:any) => {
+    return {
+        getInfor: (dataInfor: DataInfor) => {
+            dispatch(actions.getInfor(dataInfor));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SettingUser);

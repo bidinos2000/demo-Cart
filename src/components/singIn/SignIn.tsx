@@ -18,10 +18,11 @@ const SignInContent = (props: any) => {
     const [loginSuccess, setLoginSuccess] = useState(true);
 
     //call api login account
-    const onFinish = (value: any) => {
-        axiosClient.post(`${API_URL}login`,{email: value.email,password: value.password}).then((res:any) => {
+    const onFinish = async (value: any) => {
+        await axiosClient.post(`${API_URL}login`,{email: value.email,password: value.password}).then((res:any) => {
             if(res.code === 200 ) {
-                localStorage.setItem('token', JSON.stringify(res.token));
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('id', res.data.user._id);
                 setLoginSuccess(false);
                 history.push('/');
             }else if(res.code === 400){
