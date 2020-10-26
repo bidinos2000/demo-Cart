@@ -1,3 +1,4 @@
+import { type } from 'os';
 import * as types from './../constants/actionTypes';
 
 export const checkOut = (check: boolean) => {
@@ -62,5 +63,12 @@ export const getHistory = (data: DataHistory) => {
     return {
         type: types.GET_HISTORY_USER,
         data,
+    }
+}
+
+export const deleteAccount = (data: DataHistory) => {
+    return {
+        type: types.DELETE_ACCOUNT,
+        data
     }
 }

@@ -10,7 +10,7 @@ import * as mess from './../../constants/message';
 import Model1 from './Model/Model1';
 import ARI_URL from './../../constants/configProducts';
 import axiosClient from './../../untils/axiosClient';
-
+import monent from 'moment';
 
 const { Column } = Table;
 
@@ -113,21 +113,28 @@ const CartContent = (props: any) => {
                     setVisible1(true);
                 }else{
                     //format date
-                    let pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-                    let date = new Date();
-                    let formatDate = new Date(date.toString().replace(pattern, '$3-$2-$1'));
-                    let idUser = localStorage.getItem('id');
+                    const time  = monent().format('MMM Do YYYY, h:mm:ss a');
+                    //random id
+                    let s4 = () => {
+                        return Math.floor((1+ Math.random()) * 0x10000).toString(16).substring(1);
+                    }
+                    let generateId = () => {
+                        return s4() + s4() + '-' + s4() + '-' + s4() + s4() + '-' + s4()
+                    }
+                    let idUser = localStorage.getItem('id');               
                     dataCart.forEach((cart:Product, index:number) => {
-                        axiosClient.post(`${ARI_URL}history`, {date: formatDate,idUser:idUser, product:cart}).then((res:any) =>{
-                            mess.CHECK_OUT();
-                            history.push('/');
-                            localStorage.setItem('cart', '');
-                            props.onAddCart([]);
+                        axiosClient.post(`${ARI_URL}history`, {date: time, idUser:idUser, product:cart, idRandom:generateId()}).then((res:any) =>{
+
                         }).catch((err:any) => {
                             mess.CHECK_OUT_FAIL();
                             console.log(err);
+                            return;
                         });
                     });
+                    mess.CHECK_OUT();
+                    history.push('/');
+                    localStorage.setItem('cart', '');
+                    props.onAddCart([]);
                 }
             }
         }else{

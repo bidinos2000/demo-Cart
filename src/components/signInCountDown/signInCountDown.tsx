@@ -15,7 +15,7 @@ const SignInCountDown = (props: any) => {
     
     useEffect(() => {
         const countDown = setInterval(() => {
-            if(timeString <= 0){
+            if(timeString === 1){
                 onFinish(accRegister);
             }else {
                 setTimeString(timeString - 1);
@@ -35,7 +35,6 @@ const SignInCountDown = (props: any) => {
                 localStorage.setItem('token', res.data.token);
                 setLoginSuccess(false);
                 history.push('/');
-                // window.location.reload();
             }
         });
     }

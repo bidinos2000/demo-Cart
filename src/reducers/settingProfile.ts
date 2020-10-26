@@ -1,3 +1,4 @@
+import { stat } from 'fs';
 import * as types from './../constants/actionTypes';
 
 const initialState: DataInfor = {

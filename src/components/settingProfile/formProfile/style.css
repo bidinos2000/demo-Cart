@@ -160,3 +160,34 @@
   .btn-save{
       margin-top: 20px;
   }
+
+  .ant-drawer-header{
+    background:#0f131e;
+  }
+
+  .ant-drawer-title{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .ant-drawer-body{
+    background-image: url('https://i.pinimg.com/originals/d4/5f/39/d45f39f3be957603d0aaccf0c3cf90f9.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 95%;
+    color: white;
+  }
+
+  .change-password {
+    margin-top: 80px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .color-change{
+    font-weight: 500;
+    color: white;
+  }

@@ -10,6 +10,6 @@ export const myReducer = combineReducers({
     accRegister,
     productAddCard,
     dataInfor,
-    history
+    history,
 });
 

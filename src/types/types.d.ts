@@ -59,5 +59,15 @@ type DataHistory = {
     id: any,
     date: string,
     idUser: string,
-    product: Product
+    product: Product,
+    idRandom: string
+}
+
+type Historys = {
+    id : string,
+    image: string,
+    name: string,
+    date: string,
+    quantity: number,
+    price: number,
 }
