@@ -71,3 +71,11 @@ type Historys = {
     quantity: number,
     price: number,
 }
+
+type Confirm = {
+    id: string,
+    image: string,
+    name: string,
+    date: string,
+    status: boolean,
+}

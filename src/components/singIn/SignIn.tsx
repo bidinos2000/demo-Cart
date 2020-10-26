@@ -23,6 +23,7 @@ const SignInContent = (props: any) => {
             if(res.code === 200 ) {
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('id', res.data.user._id);
+                localStorage.setItem('dataP', value.password);
                 setLoginSuccess(false);
                 history.push('/');
             }else if(res.code === 400){

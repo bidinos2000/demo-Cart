@@ -1,11 +1,17 @@
 import React from 'react';
-import {Input} from 'antd';
+import AboutUs from '../components/about/aboutUs';
+import Gallery from '../components/about/gallery';
 
 const AboutPage = () => {
     return (
-        <div>
-            <Input placeholder="Basic usage"  className="input"/>
-        </div>
+        <>
+            <div className="about_area">
+                <div className="container">
+                    <AboutUs />
+                </div>
+            </div>
+            <Gallery />
+        </>
     )
 }
 

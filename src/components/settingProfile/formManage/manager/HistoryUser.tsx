@@ -1,14 +1,13 @@
 import {Row, Col, Table , Image} from 'antd';
 import React from 'react';
-import { connect } from 'react-redux';
-
+import './style.css';
 
 const { Column } = Table;
 const HistoryUser = (props: any) => {
-    const {history} = props;
     const newData: Array<Historys> = [];
-
-    if(history.length > 0) {
+    const local = localStorage.getItem('history');
+    const dataLocal = local ? JSON.parse(local) : [];
+    if(dataLocal.length > 0) {
         let termList: Historys = {
             id: '',
             image: '',
@@ -17,7 +16,7 @@ const HistoryUser = (props: any) => {
             quantity: 0,
             price: 0
         }
-        history.forEach((data:DataHistory, index:number) => {
+        dataLocal.forEach((data:DataHistory, index:number) => {
             termList = {
                 id : data.idRandom,
                 image: data.product.image,
@@ -66,10 +65,5 @@ const HistoryUser = (props: any) => {
     )
 }
 
-const mapStateToProps = (state:any) => {
-    return {
-        history: state.history
-    }
-}
 
-export default connect(mapStateToProps, null)(HistoryUser);
+export default HistoryUser;

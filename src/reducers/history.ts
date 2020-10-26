@@ -30,11 +30,25 @@ const myReducer = (state = initialState, action: any) => {
                     localStorage.setItem('cart', '');
                     localStorage.removeItem("token");
                     localStorage.removeItem("id");
+                    localStorage.removeItem("dataP");
                 }).catch((err:any) => {
                     console.log(err);
                 })
             });
             state = filterHistory1;
+            return state;
+        case types.CONFIRM_RECEIVE:
+            console.log(listHistory);
+            listHistory.forEach((data, index) => {
+                axiosClient.put(`${ARI_URL}history/${data.id}`, {product: data.product}).then((res:any) => {
+                    localStorage.setItem('history', JSON.stringify(listHistory));
+                    
+                }).catch((err:any) => {
+                    console.log(err);
+                });
+            });
+            state = listHistory;
+            console.log(state);
             return state;
         default: return state;
     }

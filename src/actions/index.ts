@@ -72,3 +72,10 @@ export const deleteAccount = (data: DataHistory) => {
         data
     }
 }
+
+export const confirmReceive = (data: Array<DataHistory>) => {
+    return {
+        type: types.CONFIRM_RECEIVE,
+        data
+    }
+}

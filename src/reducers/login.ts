@@ -1,6 +1,6 @@
 import * as types from './../constants/actionTypes';
 
-const initialState: boolean = true ;
+const initialState: boolean = localStorage.getItem('loginSuccess') === '0' ? false : true;
 
 const myReducer = (state = initialState, action: any) => {
     switch(action.type) {

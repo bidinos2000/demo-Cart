@@ -56,6 +56,7 @@ const Navbar = (props:any) => {
         localStorage.setItem('cart', '');
         localStorage.removeItem("token");
         localStorage.removeItem("id");
+        localStorage.removeItem("dataP");
         props.onChangeStatus(true);
         props.onAddCart([]);
     }

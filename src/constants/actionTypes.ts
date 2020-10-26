@@ -8,3 +8,4 @@ export const GET_INFOR = "GET_INFOR";
 export const UPDATE_INFOR = "UPDATE_INFOR";
 export const GET_HISTORY_USER = "GET_HISTORY_USER";
 export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
+export const CONFIRM_RECEIVE = "CONFIRM_RECEIVE";
