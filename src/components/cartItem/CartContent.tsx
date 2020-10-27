@@ -109,7 +109,7 @@ const CartContent = (props: any) => {
             }else{
                 const checkLogin = localStorage.getItem('loginSuccess');
                 if(!checkLogin) {
-                    console.log('fail')
+                    console.log('fail');
                     setVisible1(true);
                 }else{
                     //format date

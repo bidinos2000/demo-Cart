@@ -32,6 +32,11 @@ const FormManage = (props:any) => {
     const confirm =  (e:any) => {
         axiosClient.post(`${API_URL}remove-account`,null, {Authorization: `Baerer ${token}`}).then((res:any)=> {
             if(res.code === 200) {
+                localStorage.setItem('loginSuccess', '');
+                localStorage.setItem('cart', '');
+                localStorage.removeItem("token");
+                localStorage.removeItem("id");
+                localStorage.removeItem("dataP");
                 props.onChangeStatus(true);
                 props.onAddCart([]);
                 props.deleteAccount(dataHistory);
